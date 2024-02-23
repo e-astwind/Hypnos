@@ -5,9 +5,14 @@ import { Play } from "../pages/Play";
 
 export function Routes() {
   const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Play} />
       </Stack.Navigator>

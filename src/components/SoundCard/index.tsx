@@ -3,7 +3,7 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { styles } from "./style";
 import { colors } from "../../theme/colors";
-import { Icon } from "./Icon";
+import { Icon } from "../Icon";
 
 interface SoundCardProps {
   image: string;
