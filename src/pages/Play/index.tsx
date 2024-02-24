@@ -11,6 +11,7 @@ import { Icon } from "../../components/Icon";
 import { colors } from "../../theme/colors";
 import { Audio } from "expo-av";
 import Slider from "@react-native-community/slider";
+import PersonalitySoundCard from "../../components/personalitySoundCard";
 
 export function Play({ navigation, route: { params } }) {
   const [statusCurrentSound, setStatusCurrentSound] = React.useState(false);
@@ -59,6 +60,8 @@ export function Play({ navigation, route: { params } }) {
       soundRef.current?.unloadAsync();
     };
   }, []);
+
+  const personalitySound = [{}, {}, {}];
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.logoContainer}>
@@ -135,6 +138,21 @@ export function Play({ navigation, route: { params } }) {
           color={colors.primaryLight}
           icon={Feather}
         />
+      </View>
+      <View
+        style={{
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          gap: 16,
+          marginTop: 20,
+          height: 100,
+          alignItems: "center",
+        }}
+      >
+        {/* {personalitySound.map((item, index) => {
+          return <PersonalitySoundCard key={index} />;
+        })} */}
       </View>
     </View>
   );
