@@ -9,12 +9,13 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
+        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
         }}
       >
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Profile" component={Play} />
+        <Stack.Screen name="Play" component={Play} />
       </Stack.Navigator>
     </NavigationContainer>
   );

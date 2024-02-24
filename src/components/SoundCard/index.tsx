@@ -1,4 +1,4 @@
-import { Image, Text, TouchableOpacity } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { styles } from "./style";
@@ -8,22 +8,28 @@ import { Icon } from "../Icon";
 interface SoundCardProps {
   image: string;
   title: string;
+  details: string;
   onPress: () => void;
 }
 
-export function SoundCard({ image, title, onPress }: SoundCardProps) {
+export function SoundCard({ image, title, details, onPress }: SoundCardProps) {
   const screenStyles = styles();
   return (
     <TouchableOpacity style={screenStyles.container} onPress={onPress}>
-      <Image source={{ uri: image }} style={screenStyles.image} />
-      <Text style={screenStyles.title}>{title}</Text>
-      <Icon
-        name="caretright"
-        size={22}
-        color={colors.primaryLight}
-        icon={AntDesign}
-        styles={screenStyles.iconContainer}
-      />
+      <View>
+        <Image source={{ uri: image }} style={screenStyles.image} />
+        <Icon
+          name="caretright"
+          size={22}
+          color={colors.primaryLight}
+          icon={AntDesign}
+          styles={screenStyles.iconContainer}
+        />
+      </View>
+      <View style={screenStyles.detailsContainer}>
+        <Text style={screenStyles.title}>{title}</Text>
+        <Text style={screenStyles.details}>{details}</Text>
+      </View>
     </TouchableOpacity>
   );
 }

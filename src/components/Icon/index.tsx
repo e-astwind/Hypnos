@@ -16,7 +16,7 @@ export function Icon({ name, size, color, icon, onPress, styles }: IconProps) {
   return (
     <TouchableOpacity
       style={{ ...styles }}
-      disabled={!!onPress}
+      disabled={!onPress}
       onPress={onPress}
     >
       <Icon name={name} size={size} color={color} />
