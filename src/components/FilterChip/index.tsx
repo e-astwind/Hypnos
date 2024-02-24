@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
-import React, { Children } from "react";
-import { Chip, ChipProps } from "react-native-paper";
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import { colors } from "../../theme/colors";
 
-interface FilterChipProps extends ChipProps {
+interface FilterChipProps {
   index: number;
   onPress: (id: any) => void;
   selected: boolean;
+  children: React.ReactNode;
 }
 
 export default function FilterChip({
@@ -13,20 +14,24 @@ export default function FilterChip({
   onPress,
   selected,
   children,
-  ...props
 }: FilterChipProps) {
   return (
-    <Chip
-      {...props}
-      key={index}
+    <TouchableOpacity
+      style={[
+        {
+          backgroundColor: selected ? colors.primary : colors.primaryLight,
+          padding: 6,
+          height: 40,
+          borderRadius: 10,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "row",
+          gap: 4,
+        },
+      ]}
       onPress={() => onPress(index)}
-      selected={selected}
-      style={{
-        height: 38,
-        backgroundColor: selected ? "#C96DE3" : "#323232",
-      }}
     >
       {children}
-    </Chip>
+    </TouchableOpacity>
   );
 }

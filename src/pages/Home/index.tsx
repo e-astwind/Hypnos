@@ -5,40 +5,12 @@ import { styles } from "./style";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import FilterChip from "../../components/FilterChip";
 import { Icon } from "../../components/Icon";
+import { filterChips } from "../../mocks/filtersChips";
+import { colors } from "../../theme/colors";
 
 export function Home({ navigation }) {
-  const [filterSelectedSound, setFilterSelectedSound] = React.useState([
-    {
-      id: 1,
-      name: "Floresta",
-      icon: "tree",
-      selected: true,
-    },
-    {
-      id: 2,
-      name: "Praia",
-      icon: "beach",
-      selected: false,
-    },
-    {
-      id: 3,
-      name: "Chuva",
-      icon: "cloud",
-      selected: false,
-    },
-    {
-      id: 4,
-      name: "Cachoeira",
-      icon: "water",
-      selected: false,
-    },
-    {
-      id: 5,
-      name: "Fogueira",
-      icon: "fire",
-      selected: false,
-    },
-  ]);
+  const [filterSelectedSound, setFilterSelectedSound] =
+    React.useState(filterChips);
   const [sounds, setSounds] = React.useState([
     {
       title: "Rio",
@@ -46,20 +18,25 @@ export function Home({ navigation }) {
         "https://i.pinimg.com/originals/7d/55/ec/7d55ec37173aea85e8ba118cc7a7b987.gif",
       details:
         "O murmúrio suave de um rio em seu curso transmite calma e tranquilidade, levando embora as preocupações do dia.",
+      sound: require("../../assets/sounds/primarys-sounds/river.mp3"),
     },
+
     {
       title: "Praia",
       image:
         "https://i.pinimg.com/originals/df/7d/b5/df7db5d92f18d321f1163033d5f19963.gif",
       details:
         "O rugido distante de uma cachoeira cria uma melodia poderosa que acalma a mente e renova o espírito.",
+      sound: require("../../assets/sounds/primarys-sounds/river.mp3"),
     },
+
     {
       title: "Cachoeira",
       image:
         "https://i.pinimg.com/originals/6c/ca/f0/6ccaf06d049c8922a26a47a9373a8f40.gif",
       details:
         "O som suave das ondas quebrando na costa e o murmúrio do vento marítimo formam uma melodia relaxante que convida ao descanso.",
+      sound: require("../../assets/sounds/primarys-sounds/river.mp3"),
     },
   ]);
 
@@ -115,13 +92,23 @@ export function Home({ navigation }) {
           renderItem={({ item }) => {
             return (
               <FilterChip
-                textStyle={{ color: "#FFF" }}
-                icon={item.icon}
                 index={item.id}
                 onPress={(id) => selectedFilterChip(id)}
                 selected={item.selected}
               >
-                {item.name}
+                <Icon
+                  name={item.icon}
+                  size={20}
+                  color={item.selected ? colors.primaryLight : colors.primary}
+                  icon={item.iconName}
+                />
+                <Text
+                  style={{
+                    color: item.selected ? colors.primaryLight : colors.primary,
+                  }}
+                >
+                  {item.name}
+                </Text>
               </FilterChip>
             );
           }}

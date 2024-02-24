@@ -41,5 +41,12 @@ export const styles = () => {
       width: 48,
       height: 48,
     },
+    volumeContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 30,
+      gap: 4,
+    },
   });
 };
